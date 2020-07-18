@@ -55,6 +55,8 @@ namespace OpArray
             {
                 if (ValidaLleno())
                 {
+                    //forza la ejecución del catch y envía un mensaje 
+                    //de exepción a desplegar evitando el resto del código.
                     throw new Exception("El arreglo está lleno");
                 }
 
