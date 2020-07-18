@@ -22,14 +22,7 @@ namespace OpArray
 
         private static bool ValidaVacio()
         {
-            if (Arreglo[0]==null)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return Arreglo[0] == null ? true : false;
             
         }
     }
