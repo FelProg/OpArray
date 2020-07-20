@@ -23,6 +23,7 @@ namespace OpArray
                 Imprimir();
                 Buscar("Dos");
                 Buscar("Tres");
+                Imprimir();
 
             }
             catch (Exception ex)
