@@ -67,6 +67,7 @@ namespace OpArray
         {
             try
             {
+                Console.Write($"Agregando[{Dato}] :  ");
                 if (ValidaLleno())
                 {
                     //forza la ejecución del catch y envía un mensaje 
@@ -76,7 +77,7 @@ namespace OpArray
 
                 if (ValidaExiste(Dato))
                 {
-                    Console.WriteLine($"Ya existe {Dato} en el arreglo");
+                    Console.WriteLine($"{Dato} ya existe, no fue agregado");
                     return;
                 }
                 
@@ -89,6 +90,7 @@ namespace OpArray
                         if(Arreglo[i] == null)
                         {
                             Arreglo[i] = Dato;
+                            Console.Write($"[{Dato}] Agregado \n");
                             break;
                         }
                     }
@@ -138,7 +140,7 @@ namespace OpArray
                 //me devuelve la posición en caso de ser llamada por eliminar
                 if (!ban)
                     return pos;
-
+                Console.Write($"Buscando [{dato}] :  ");
                 //imprime los mensajes en pantalla en caso de utilizar el metodo
                 //buscar directamente.
                 if (pos > -1)
@@ -155,17 +157,19 @@ namespace OpArray
         {
             //pos pide a Buscar la posicion sin los mensajes desplegados.
             int pos = Buscar(dato, false);
-            
+            Console.Write($"Eliminando [{dato}] :  ");
             if (pos == -1)
             {
-                Console.WriteLine($"El dato {dato} no existe");
+                Console.WriteLine($"El dato {dato} no existe \n");
                 return;
             }
             
             //como sabemos que si existe, lo eliminamos.
             Arreglo[pos] = null;
+            Console.Write($"[{dato}] Eliminado \n");
 
             int arregloLength = Arreglo.Length;
+            
 
             //recorre el siguiente elemento del arreglo empezando de pos para no dejar
             //espacios vacios entre los datos del arreglo.
