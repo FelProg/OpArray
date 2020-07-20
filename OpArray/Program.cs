@@ -10,13 +10,21 @@ namespace OpArray
         {
             try
             {
-                Agregar("Cero");
+                Imprimir();
+                Agregar("Uno");
+                Agregar("Dos");
+                Agregar("Dos");
+                Agregar("Tres");
+                Imprimir();
+                Buscar("Uno");
+                
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                throw;
+                
             }
+            
         }
 
         private static bool ValidaVacio()
@@ -60,10 +68,17 @@ namespace OpArray
                     throw new Exception("El arreglo está lleno");
                 }
 
-                if (!ValidaExiste(Dato))
+                if (ValidaExiste(Dato))
                 {
+                    Console.WriteLine($"Ya existe {Dato} en el arreglo");
+                    return;
+                }
+                
+                    //variable para almacenar la longitud del arreglo, de tal forma que 
+                    //en una iteración muy grande, evite que el for este preguntando por
+                    //el .Length del arreglo repetidas veces.
                     int arregloLength = Arreglo.Length;
-                    for(int i=0; i<Arreglo.Length; i++)
+                    for(int i=0; i<arregloLength; i++)
                     {
                         if(Arreglo[i] == null)
                         {
@@ -71,6 +86,35 @@ namespace OpArray
                             break;
                         }
                     }
+                                     
+            }
+            catch (Exception ex)
+            {
+
+                throw new Exception(ex.Message);
+            }
+        }
+
+        private static void Imprimir()
+        {
+            try
+            {
+                if (ValidaVacio())
+                {
+                    Console.WriteLine("El arreglo está vacío");
+                    return;
+                }
+                
+
+                int arregloLength = Arreglo.Length;
+                for(int i=0; i<arregloLength; i++)
+                {
+                    if(Arreglo[i] == null)
+                    {
+                        Console.WriteLine("Fin del arreglo");
+                        break;
+                    }
+                    Console.WriteLine($"[{i}] - {Arreglo[i]}");
                 }
             }
             catch (Exception ex)
@@ -79,5 +123,22 @@ namespace OpArray
                 throw new Exception(ex.Message);
             }
         }
+
+        private static void Buscar(string dato)
+        {
+            if (!ValidaVacio())
+            {
+                int pos = Array.IndexOf(Arreglo, dato);
+                if (pos > -1)
+                {
+                    Console.WriteLine($"{dato} esta en el lugar [{pos}]");
+                    return;
+                }
+                Console.WriteLine($"{dato} no se encuentra en la tabla");
+            }
+        }
+
+
+
     }
 }
